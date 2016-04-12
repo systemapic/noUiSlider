@@ -1,25 +1,11 @@
 
 	// Delimit proposed values for handle positions.
-	function getPositions ( a, b, delimit ) {
-
-		// Add movement to current position.
-		var c = a + b[0], d = a + b[1];
-
-		// Only alter the other position on drag,
-		// not on standard sliding.
-		if ( delimit ) {
-			if ( c < 0 ) {
-				d += Math.abs(c);
-			}
-			if ( d > 100 ) {
-				c -= ( d - 100 );
-			}
-
-			// Limit values to 0 and 100.
-			return [limit(c), limit(d)];
+	function getPositions ( a, b ) {
+		var result = b.slice();
+		for (var i=0 ; i<result.length ; i++) {
+			result[i]+=a;
 		}
-
-		return [c,d];
+		return result;
 	}
 
 	// Provide a clean event with standardized offset values.
